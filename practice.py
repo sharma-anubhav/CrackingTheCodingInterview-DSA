@@ -1,12 +1,12 @@
+def get_nge(arr):
+    n = len(arr)
+    nga = [-1]*n
+    stack = []
 
-selected = []
-def summ(arr, k, ):
-    global selected
-    if not arr:
-        return selected
-    
-    o1 = arr[0]+
-    
-# find path in tree using recusrision and backtrack
-# find selected for sum in array using both.
-# find all possible paths.
+    for i in range(n-1, -1, -1):
+        while stack and arr[stack[-1]] <= arr[i]:
+            stack.pop()
+        if stack:
+            nga[i] = stack[-1]
+        stack.append(i)
+    return nga
