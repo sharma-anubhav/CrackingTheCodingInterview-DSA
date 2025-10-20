@@ -19,6 +19,24 @@ def dijkstra(grid):
                 heappush(pq, (new_cost, nbr))
     return -1
 
+# prims is same as dijkstra with only differenec that we do not push cost+grid[nbr] but only grid[nbr]
+# intuition is that we only want to connect chepest node that has not yet been connected to our current.
+def prims(grid):
+    s = (0,0)
+    visited = set() 
+    pq = []
+    total_cost = 0
+    heappush(pq, (grid[s[0]][s[1]], s))
+    while pq:
+        cost, node = heappop(pq)
+        if node in visited:
+            continue
+        visited.add(node)
+        total_cost+=cost
+        for nbr in get_nbr(node):
+            if is_valid(grid, nbr) and nbr not in visited:
+                heappush(pq, (grid[nbr[0]][nbr[1]], nbr)) # <- The only difference is we only push (weight(nbr) and not  cost+weight(mbr)
+    return total_cost
 
 def dijkstra(grid):
     s, e = (0,0), (len(grid)-1, len(grid[0])-1)
