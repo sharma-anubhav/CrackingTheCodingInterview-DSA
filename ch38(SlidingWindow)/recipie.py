@@ -130,16 +130,16 @@ def atmost(sales):
 atmost(sales)
 
 # RECEPIE 4: MIN WINDOW
-"""prefer first
-  while true
-    if the window must grow to become valid
-      if the window cannot grow (r == len(arr))
-        break
-      grow the window (update data structures and increase r)
-    else
-      update cur_best if needed
-      shrink the window (update data structures and increase l)
-  return cur_best
+"""
+## Remember if we direclty break while w.r < len(arr) then we miss last shrinking opportunity
+while True:
+    if must_grow:
+        if r == len(arr):
+            break
+        grow()
+    else:
+        update_best()
+        shrink()
 """
 def mustgrow(window, sales):
     if window.sum <= 20:

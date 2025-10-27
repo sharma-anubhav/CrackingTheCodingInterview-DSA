@@ -2,7 +2,6 @@
 def topo_sort_dfs(graph):
     visited = set()
     order = []
-
     def dfs(node):
         visited.add(node)
         for nbr in graph.get(node, []):
